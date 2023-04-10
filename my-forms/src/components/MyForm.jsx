@@ -3,16 +3,39 @@ import {useState, useEffect} from 'react';
 const MyForm = ({}) => {
     const [person, setPerson] = useState({name:'', email:'', phone:'', phoneType:'', staff:'', bio:'', notify: false });
 
-    const handleChangeCreator = (attribute) => {
-      console.log('using handle change creator');
+    const handleChangeCreator = attribute => {
+      console.log([attribute], 'mmmmmm');
       return e => {
+            
         setPerson(prev => ({...prev, [attribute]: e.target.value}));
+      
       };
     };
 
+    const validateName = ()=> {
+      if (person.name === ''){
+       alert(' Please type in a name');
+      }
+    }
+
+
+    const validateEmail=() => {
+       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+       if (!emailRegex.test(person.email)){
+          alert("Please put in valid email")
+       }
+    }
+
+    const onSubmit = (e) =>{
+       e.preventDefault()
+       validateName();
+       validateEmail();
+       console.log(person)
+    }
+
     return (
         <>
-          <form>
+          <form onSubmit={onSubmit}>
             <label htmlFor="name">Name:</label>
             <input id="name" value={person.name} onChange={handleChangeCreator('name')}/>
             <label htmlFor="email">Email:</label>
