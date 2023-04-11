@@ -12,6 +12,9 @@ h1, h3 {
 h3 {
     padding-top: 24px;
 }
+body {
+    background-color: transparent;
+}
 
 /* Buttons, Image & Message Layout */
 .button-controls {
