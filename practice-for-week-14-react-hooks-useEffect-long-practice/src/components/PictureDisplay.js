@@ -25,26 +25,22 @@ const feathers = [
 ];
 
 function PictureDisplay ({ size, featherCount, featherColors }) {
-  console.log(featherColors, 'in PICTURE DSIPLAY')
+  
  
   useEffect(()=>{
-    console.log('PictureDisplay', size, featherCount, featherColors);
- 
+    console.log('featherCount',featherCount)},[featherCount])
 
-  },[size, featherCount, featherColors])
   let sizeImage = '';
   useEffect(()=>{
-   
-    if (size === 's'){
-      sizeImage = 'small'  
-    }
- 
+      console.log('size', size)
+    },[size])
 
-  },[size])
+  useEffect(()=>{
+    console.log('fc', featherColors)},[featherColors])
 
   
   
-  // TODO: Wrap in useEffect
+
   const colors = [];
   if (!featherColors || featherColors.length === 0) featherColors = [''];
   for (let i=0; i<featherCount; i++) {
